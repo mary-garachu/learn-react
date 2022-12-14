@@ -17,6 +17,8 @@ const HeaderLinks = () => {
         <NavLink to="/contact">Contact</NavLink>
 
         <NavLink to="/socials">Social media</NavLink>
+
+        <NavLink to="/form">Form</NavLink>
       </nav>
     </div>
   );

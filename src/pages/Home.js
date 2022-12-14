@@ -6,24 +6,24 @@ import classes from '../images/classes.jpg'
 import comp from '../images/comp.jpg'
 
 
-const client1 = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com/posts" 
-});
+// const client1 = axios.create({
+//   baseURL: "https://jsonplaceholder.typicode.com/posts" 
+// });
 // const client = axios.create({
 //   baseURL: "https://jsonplaceholder.typicode.com/posts/1" 
 // });
 
 const Home = () => {
-  const [post, setPost] = useState([]);
-  const [error, setError] = React.useState(null);
+  // const [post, setPost] = useState([]);
+  // const [error, setError] = React.useState(null);
 
-  useEffect(() => {
-    async function getPost() {
-      const response = await client.get("/1");
-      setPost(response.data);
-    }
-    getPost();
-  }, []);
+  // useEffect(() => {
+  //   async function getPost() {
+  //     const response = await client.get("/1");
+  //     setPost(response.data);
+  //   }
+  //   getPost();
+  // }, []);
 
   // axios.get(`${baseURL}/asdf`).then((response) => {
   //   setPost(response.data);
@@ -76,7 +76,7 @@ const Home = () => {
       <button onClick={createPost}>Add Post</button>
       <button onClick={editPost}>Edit Post</button>
       <button onClick={deletePost}>Delete</button> */}
-      <p>{post.body}</p>
+      {/* <p>{post.body}</p> */}
     </div>
   );
 };
