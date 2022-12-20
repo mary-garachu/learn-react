@@ -1,25 +1,44 @@
-import React, { useEffect } from 'react'
-import Layout from '../components/Layout'
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+// import Layout from '../components/Layout'
 
 const About = () => {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [users, setUsers] = useState([]);
 
-const [ post, setPost] = ('');
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users/")
+      .then(res => res.json())
+      .then(
+        (data) => {
+          setIsLoaded(true);
+          setUsers(data);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }, []);
 
-useEffect (() => {
-  axios.get('https://natnaele.sg-host.com/wp-json/wp/v2/subsidiary').then((response) => {
-      setPost(response.data);
-    }).catch(error => {
-      setError(error);
-    });
+  if (error) {
+    return <div> Error:{error.message}</div>;
+  } else if (!isLoaded) {
+    return <div> Loading ...</div>;
+  } else {
+    return (
+      <div>
+        {users.map((user) => (
+          <ul>
+            <li>
+              <Link to={`contact/${user.id}`}>{user.name}</Link>
+            </li>
+          </ul>
+        ))}
+      </div>
+    );
+  }
+};
 
-})
-  return (
-    <div>
-       <Layout />
-       <p>{}</p>
-    </div>
-  )
-}
-
-export default About
+export default About;
